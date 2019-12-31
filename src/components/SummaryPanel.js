@@ -8,6 +8,7 @@ export default class SummaryPanel extends Component {
         super(props);
         this.state = {
             isCollapsed: false,
+            desiredPumpSpeed: this.props.desiredData.Pump_Speed
         }
         this.toggle = this.toggle.bind(this);
     }
@@ -18,7 +19,7 @@ export default class SummaryPanel extends Component {
         })
     }
     render() {
-        let { isCollapsed } = this.state;
+        let { isCollapsed, desiredPumpSpeed } = this.state;
         let { sensorData } = this.props;
         return (
             <View style={styles.container}>
@@ -47,6 +48,46 @@ export default class SummaryPanel extends Component {
                             <Text style={styles.dataText}>{`${sensorData.Temperature_Celcius[sensorData.Temperature_Celcius.length - 1]}°C`}</Text>
                             <Text style={styles.dataLabel}>Temperature</Text>
                         </View>
+                    </View>
+                    <View style={styles.pumpStatus}>
+                        <View style={styles.pumpControl}>
+                            <Button
+                                icon={
+                                    <Icon
+                                        name={'minus'}
+                                        size={20}
+                                        type="material-community"
+                                        color='rgba(0, 153, 51, 1)'
+                                    />
+                                }
+                                type='clear'
+                                onPress={() => {
+                                    this.props.callBackFunction(desiredPumpSpeed - 1, "Pump_Speed")
+                                    this.setState({
+                                        "desiredPumpSpeed": desiredPumpSpeed - 1
+                                    })
+                                }}
+                            />
+                            <Text style={styles.dataText}>{`${desiredPumpSpeed}%`}</Text>
+                            <Button
+                                icon={
+                                    <Icon
+                                        name={'plus'}
+                                        size={20}
+                                        type="material-community"
+                                        color='rgba(0, 153, 51, 1)'
+                                    />
+                                }
+                                type='clear'
+                                onPress={() => {
+                                    this.props.callBackFunction(desiredPumpSpeed + 1, "Pump_Speed")
+                                    this.setState({
+                                        "desiredPumpSpeed": desiredPumpSpeed + 1
+                                    })
+                                }}
+                            />
+                        </View>
+                        <Text style={styles.dataLabel}>Pump Speed</Text>
                     </View>
                 </Collapsible>
             </View>
@@ -83,6 +124,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-between',
+        paddingBottom: -5
     },
     lastUpdateLabel: {
         fontStyle: 'italic',
@@ -90,5 +132,20 @@ const styles = StyleSheet.create({
     },
     dataText: {
         fontSize: 20
+    },
+    pumpStatus: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: 16,
+    },
+    pumpControl: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10,
+        paddingBottom: 0
     }
 })

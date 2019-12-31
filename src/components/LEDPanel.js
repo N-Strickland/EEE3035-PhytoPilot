@@ -46,13 +46,13 @@ export default class LEDPanel extends Component {
                                     progressColor={"blue"}
                                     circleRadius={55}
                                     progressWidth={14}
-                                    animationSpeed={2}
+                                    animationSpeed={1.5}
                                 >
                                     <Text style={{ fontSize: 20 }}>{`${desiredBlueLED}%`}</Text>
                                 </SemiCircleProgress>
                             </View>
-                            <View style={{ positon: 'absolute', zIndex: 3, bottom: 50 }}>
-                                <Slider style={{ transform: [{ scaleX: 1.2 }, { scaleY: 3.5 }] }}
+                            <View>
+                                <Slider
                                     minimumValue={0}
                                     maximumValue={100}
                                     step={1}
@@ -61,9 +61,8 @@ export default class LEDPanel extends Component {
                                         desiredBlueLED: value
                                     })}
                                     onSlidingComplete={value => this.props.callBackFunction(value, "LEDs_Blue")}
-                                    thumbTintColor={'transparent'}
-                                    minimumTrackTintColor={'transparent'}
-                                    maximumTrackTintColor={'transparent'}
+                                    thumbTintColor={'rgba(0, 153, 51, 1)'}
+                                    thumbStyle={{ transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }] }}
                                 />
                             </View>
                         </View>
@@ -75,13 +74,13 @@ export default class LEDPanel extends Component {
                                     progressColor={"red"}
                                     circleRadius={55}
                                     progressWidth={14}
-                                    animationSpeed={1}
+                                    animationSpeed={1.5}
                                 >
                                     <Text style={{ fontSize: 20 }}>{`${desiredRedLED}%`}</Text>
                                 </SemiCircleProgress>
                             </View>
-                            <View style={{ positon: 'absolute', zIndex: 3, bottom: 50 }}>
-                                <Slider style={{ transform: [{ scaleX: 1.2 }, { scaleY: 3.5 }] }}
+                            <View>
+                                <Slider
                                     minimumValue={0}
                                     maximumValue={100}
                                     step={1}
@@ -90,9 +89,8 @@ export default class LEDPanel extends Component {
                                         desiredRedLED: value
                                     })}
                                     onSlidingComplete={value => this.props.callBackFunction(value, "LEDs_Red")}
-                                    thumbTintColor={'transparent'}
-                                    minimumTrackTintColor={'transparent'}
-                                    maximumTrackTintColor={'transparent'}
+                                    thumbTintColor={'rgba(0, 153, 51, 1)'}
+                                    thumbStyle={{ transform: [{ scaleX: 0.75 }, { scaleY: 0.75 }] }}
                                 />
                             </View>
                         </View>

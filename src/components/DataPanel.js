@@ -19,7 +19,7 @@ Amplify.addPluggable(new AWSIoTProvider({
 }));
 
 async function publish_iot(topic, message) {
-    console.log(topic)
+    console.log(topic, message)
     await PubSub.publish(topic, message);
 }
 
@@ -94,7 +94,15 @@ export default class DataPanel extends Component {
     }
 
     updateShadowDocument(data, dataType) {
-        if (dataType == 'pH_Value') {
+        if (dataType == 'Pump_Speed') {
+            publish_iot(TOPICS[2], {
+                "state": {
+                    "desired": {
+                        "Pump_Speed": data
+                    }
+                }
+            });
+        } else if (dataType == 'pH_Value') {
             publish_iot(TOPICS[2], {
                 "state": {
                     "desired": {
@@ -160,7 +168,9 @@ export default class DataPanel extends Component {
                     }
                     {sensorDataLoaded &&
                         <View style={styles.sensorPanels}>
-                            <SummaryPanel sensorData={currentSensorValues} />
+                            <SummaryPanel sensorData={currentSensorValues}
+                                desiredData={desiredSensorValues}
+                                callBackFunction={this.updateShadowDocument} />
                             <View style={{ paddingTop: 10 }}>
                                 <TempPanel sensorData={currentSensorValues} />
                             </View>
