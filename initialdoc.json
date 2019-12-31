@@ -1,0 +1,24 @@
+{
+    "state": {
+        "desired": {
+            "pH_Value": null,
+            "LEDs_Red": null,
+            "LEDs_Blue": null,
+            "Pump_Speed": null
+        },
+        "reported": {
+            "pH_Value": [
+                0
+            ],
+            "Pump_Speed": null,
+            "LEDs_Red": null,
+            "LEDs_Blue": null,
+            "Temperature_Celcius": [
+                0
+            ],
+            "pH_DispensingPlus": false,
+            "pH_DispensingMinus": false
+        }
+    },
+    "timestamp": 0
+}

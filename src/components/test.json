@@ -1,0 +1,50 @@
+{
+    "provider": {
+        "_clientIdObservers": Map {
+            "b8a90240-7697-4bc0-a5df-775b406ca2a1" => [Set
+            ]
+        },
+        "_clientsQueue": {
+            "promises": [Map
+            ]
+        },
+        "_config": {
+            "aws_appsync_apiKey": "da2-xtth7nqihzfedd2ng67oi4lwsu",
+            "aws_appsync_authenticationType": "API_KEY",
+            "aws_appsync_graphqlEndpoint": "https://ev4xze7pejfdxgfwrbxcdnfmuu.appsync-api.eu-west-1.amazonaws.com/graphql",
+            "aws_appsync_region": "eu-west-1",
+            "aws_cognito_identity_pool_id": "eu-west-1:094c59ac-833d-4efc-914f-e3704a512d6f",
+            "aws_cognito_region": "eu-west-1",
+            "aws_project_region": "eu-west-1",
+            "aws_pubsub_endpoint": "wss://a1xoo1c7ikxf02-ats.iot.eu-west-1.amazonaws.com/mqtt",
+            "aws_pubsub_region": "eu-west-1",
+            "aws_user_pools_id": "eu-west-1_xjtZtyhWc",
+            "aws_user_pools_web_client_id": "6lr782ohj9tufavk0sv0acl9oc",
+            "clientId": "b8a90240-7697-4bc0-a5df-775b406ca2a1",
+            "oauth": [Object
+            ]
+        },
+        "_topicObservers": Map {
+            "$aws/things/PhytoPilot/shadow/get/accepted" => [Set
+            ]
+        }
+    },
+    "value": {
+        "metadata": {
+            "desired": [Object
+            ],
+            "reported": [Object
+            ]
+        },
+        "state": {
+            "delta": [Object
+            ],
+            "desired": [Object
+            ],
+            "reported": [Object
+            ]
+        },
+        "timestamp": 1576672169,
+        "version": 3, Symbol(topic): "$aws/things/PhytoPilot/shadow/get/accepted"
+    }
+}

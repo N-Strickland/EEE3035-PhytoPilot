@@ -1,0 +1,19 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-phytopilot-dev-165456-authRole",
+            "UnauthRoleArn": "arn:aws:iam::225470880786:role/amplify-phytopilot-dev-165456-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::225470880786:role/amplify-phytopilot-dev-165456-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-phytopilot-dev-165456-deployment",
+            "UnauthRoleName": "amplify-phytopilot-dev-165456-unauthRole",
+            "StackName": "amplify-phytopilot-dev-165456",
+            "StackId": "arn:aws:cloudformation:eu-west-1:225470880786:stack/amplify-phytopilot-dev-165456/cd258ab0-16b6-11ea-8f22-0670bd49f898"
+        },
+        "categories": {
+            "auth": {
+                "phytopilot3e03e794": {}
+            }
+        }
+    }
+}
