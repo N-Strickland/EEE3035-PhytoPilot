@@ -24,7 +24,7 @@ export default class TempPanel extends Component {
         let minTemp = Math.min(...temps);
         let maxTemp = Math.max(...temps);
         let avgTemp = Math.round(temps.reduce((a, b) => a + b, 0) / temps.length)
-        let currentTemp = temps[temps.length - 1]
+        let currentTemp = temps[0]
         return [minTemp, maxTemp, avgTemp, currentTemp]
     }
 
@@ -48,20 +48,20 @@ export default class TempPanel extends Component {
                     <Text style={styles.lastUpdateLabel}>{`Last update: ${sensorData.timestamp}`}</Text>
                     <View style={styles.container}>
                         <View style={styles.currentTempCont}>
-                            <Text style={styles.dataText}>{`${currentTemp}°C`}</Text>
+                            <Text style={styles.dataText}>{`${currentTemp.toFixed(2)}°C`}</Text>
                             <Text style={styles.dataLabel}>Current Temperature</Text>
                         </View>
                         <View style={styles.sensorSummary}>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${minTemp}°C`}</Text>
+                                <Text style={styles.dataText}>{`${minTemp.toFixed(2)}°C`}</Text>
                                 <Text style={styles.dataLabel}>Min Temperature</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${avgTemp}°C`}</Text>
+                                <Text style={styles.dataText}>{`${avgTemp.toFixed(2)}°C`}</Text>
                                 <Text style={styles.dataLabel}>Avg Temperature</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${maxTemp}°C`}</Text>
+                                <Text style={styles.dataText}>{`${maxTemp.toFixed(2)}°C`}</Text>
                                 <Text style={styles.dataLabel}>Max Temperature</Text>
                             </View>
                         </View>
@@ -75,6 +75,7 @@ export default class TempPanel extends Component {
                                 }}
                                 numberOfTicks={10}
                                 formatLabel={value => `${value}ºC`}
+
                             />
                             <LineChart
                                 style={{ flex: 1, marginLeft: 16 }}

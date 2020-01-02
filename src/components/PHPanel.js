@@ -29,7 +29,7 @@ export default class PHPanel extends Component {
         let minPh = Math.min(...phs);
         let maxPh = Math.max(...phs);
         let avgPh = Math.round(phs.reduce((a, b) => a + b, 0) / phs.length)
-        let currentPh = phs[phs.length - 1]
+        let currentPh = phs[0]
         return [minPh, maxPh, avgPh, currentPh]
     }
 
@@ -65,20 +65,20 @@ export default class PHPanel extends Component {
                     <Text style={styles.lastUpdateLabel}>{`Last update: ${sensorData.timestamp}`}</Text>
                     <View style={styles.container}>
                         <View style={styles.currentTempCont}>
-                            <Text style={styles.dataText}>{`${currentPh}`}</Text>
+                            <Text style={styles.dataText}>{`${currentPh.toFixed(2)}`}</Text>
                             <Text style={styles.dataLabel}>pH Level</Text>
                         </View>
                         <View style={styles.sensorSummary}>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${minPh}`}</Text>
+                                <Text style={styles.dataText}>{`${minPh.toFixed(2)}`}</Text>
                                 <Text style={styles.dataLabel}>Min pH Level</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${avgPh}`}</Text>
+                                <Text style={styles.dataText}>{`${avgPh.toFixed(2)}`}</Text>
                                 <Text style={styles.dataLabel}>Avg pH Level</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${maxPh}`}</Text>
+                                <Text style={styles.dataText}>{`${maxPh.toFixed(2)}`}</Text>
                                 <Text style={styles.dataLabel}>Max pH Level</Text>
                             </View>
 
@@ -96,10 +96,10 @@ export default class PHPanel extends Component {
                                     animateTransitions={true}
                                     maximumValue={8}
                                     minimumValue={4}
-                                    step={0.1}
+                                    step={0.01}
                                     thumbTintColor={'rgba(0, 153, 51, 1)'}
                                 />
-                                <Text style={{ textAlign: 'center' }}>{`Desired pH: ${desiredPHValue}`}</Text>
+                                <Text style={{ textAlign: 'center' }}>{`Desired pH: ${desiredPHValue.toFixed(2)}`}</Text>
                             </View>
                         </View>
                         <View style={{ height: 200, flexDirection: 'row' }}>

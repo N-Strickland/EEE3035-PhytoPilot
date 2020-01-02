@@ -41,11 +41,11 @@ export default class SummaryPanel extends Component {
                             <Text style={styles.dataLabel}>LED Brightness</Text>
                         </View>
                         <View style={styles.dataContainer}>
-                            <Text style={styles.dataText}>{`${sensorData.pH_Value[sensorData.pH_Value.length - 1]}`}</Text>
+                            <Text style={styles.dataText}>{`${sensorData.pH_Value[0].toFixed(2)}`}</Text>
                             <Text style={styles.dataLabel}>pH Level</Text>
                         </View>
                         <View style={styles.dataContainer}>
-                            <Text style={styles.dataText}>{`${sensorData.Temperature_Celcius[sensorData.Temperature_Celcius.length - 1]}°C`}</Text>
+                            <Text style={styles.dataText}>{`${sensorData.Temperature_Celcius[0].toFixed(2)}°C`}</Text>
                             <Text style={styles.dataLabel}>Temperature</Text>
                         </View>
                     </View>
