@@ -32,6 +32,8 @@ export default class TempPanel extends Component {
         let { isCollapsed } = this.state;
         let { sensorData } = this.props;
         let [minTemp, maxTemp, avgTemp, currentTemp] = this.calcTempData(sensorData.Temperature_Celcius);
+        let graphData = sensorData.Temperature_Celcius.slice().reverse();
+        console.log(sensorData.Temperature_Celcius)
         return (
             <View>
                 <TouchableHighlight onPress={this.toggle} underlayColor={'transparent'}>
@@ -48,24 +50,24 @@ export default class TempPanel extends Component {
                     <Text style={styles.lastUpdateLabel}>{`Last update: ${sensorData.timestamp}`}</Text>
                     <View style={styles.container}>
                         <View style={styles.currentTempCont}>
-                            <Text style={styles.dataText}>{`${currentTemp.toFixed(2)}°C`}</Text>
+                            <Text style={styles.dataText}>{`${currentTemp.toFixed(1)}°C`}</Text>
                             <Text style={styles.dataLabel}>Current Temperature</Text>
                         </View>
                         <View style={styles.sensorSummary}>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${minTemp.toFixed(2)}°C`}</Text>
+                                <Text style={styles.dataText}>{`${minTemp.toFixed(1)}°C`}</Text>
                                 <Text style={styles.dataLabel}>Min Temperature</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${avgTemp.toFixed(2)}°C`}</Text>
+                                <Text style={styles.dataText}>{`${avgTemp.toFixed(1)}°C`}</Text>
                                 <Text style={styles.dataLabel}>Avg Temperature</Text>
                             </View>
                             <View style={styles.dataContainer}>
-                                <Text style={styles.dataText}>{`${maxTemp.toFixed(2)}°C`}</Text>
+                                <Text style={styles.dataText}>{`${maxTemp.toFixed(1)}°C`}</Text>
                                 <Text style={styles.dataLabel}>Max Temperature</Text>
                             </View>
                         </View>
-                        <View style={{ height: 200, flexDirection: 'row' }}>
+                        <View style={{ height: 250, flexDirection: 'row' }}>
                             <YAxis
                                 data={sensorData.Temperature_Celcius}
                                 contentInset={{ top: 20, bottom: 20 }}
@@ -73,16 +75,20 @@ export default class TempPanel extends Component {
                                     fill: 'grey',
                                     fontSize: 10,
                                 }}
-                                numberOfTicks={10}
-                                formatLabel={value => `${value}ºC`}
 
+                                formatLabel={value => `${value.toFixed(1)}ºC`}
+                                numberOfTicks={15}
+                                min={0}
+                                max={36}
                             />
                             <LineChart
                                 style={{ flex: 1, marginLeft: 16 }}
-                                data={sensorData.Temperature_Celcius}
+                                data={graphData}
                                 svg={{ stroke: 'rgba(0, 153, 51, 1)' }}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 animate={true}
+                                yMax={36}
+                                yMin={0}
                             >
                                 <Grid />
                             </LineChart>

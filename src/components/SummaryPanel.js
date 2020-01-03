@@ -62,10 +62,12 @@ export default class SummaryPanel extends Component {
                                 }
                                 type='clear'
                                 onPress={() => {
-                                    this.props.callBackFunction(desiredPumpSpeed - 1, "Pump_Speed")
-                                    this.setState({
-                                        "desiredPumpSpeed": desiredPumpSpeed - 1
-                                    })
+                                    if (desiredPumpSpeed - 1 >= 0) {
+                                        this.props.callBackFunction(desiredPumpSpeed - 1, "Pump_Speed")
+                                        this.setState({
+                                            "desiredPumpSpeed": desiredPumpSpeed - 1
+                                        })
+                                    }
                                 }}
                             />
                             <Text style={styles.dataText}>{`${desiredPumpSpeed}%`}</Text>
@@ -80,10 +82,12 @@ export default class SummaryPanel extends Component {
                                 }
                                 type='clear'
                                 onPress={() => {
-                                    this.props.callBackFunction(desiredPumpSpeed + 1, "Pump_Speed")
-                                    this.setState({
-                                        "desiredPumpSpeed": desiredPumpSpeed + 1
-                                    })
+                                    if (desiredPumpSpeed + 1 <= 100) {
+                                        this.props.callBackFunction(desiredPumpSpeed + 1, "Pump_Speed")
+                                        this.setState({
+                                            "desiredPumpSpeed": desiredPumpSpeed + 1
+                                        })
+                                    }
                                 }}
                             />
                         </View>

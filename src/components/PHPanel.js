@@ -37,6 +37,7 @@ export default class PHPanel extends Component {
         let { isCollapsed, desiredPHValue } = this.state;
         let { sensorData, desiredData } = this.props;
         let [minPh, maxPh, avgPh, currentPh] = this.calcPHData(sensorData.pH_Value);
+        let graphData = sensorData.pH_Value.slice().reverse();
         const HorizontalLine = (({ y }) => (
             <Line
                 key={'zero-axis'}
@@ -102,23 +103,27 @@ export default class PHPanel extends Component {
                                 <Text style={{ textAlign: 'center' }}>{`Desired pH: ${desiredPHValue.toFixed(2)}`}</Text>
                             </View>
                         </View>
-                        <View style={{ height: 200, flexDirection: 'row' }}>
+                        <View style={{ height: 250, flexDirection: 'row' }}>
                             <YAxis
-                                data={sensorData.pH_Value}
+                                data={graphData}
                                 contentInset={{ top: 20, bottom: 20 }}
                                 svg={{
                                     fill: 'grey',
                                     fontSize: 10,
                                 }}
-                                numberOfTicks={10}
-                                formatLabel={value => `${value}`}
+                                numberOfTicks={15}
+                                formatLabel={value => `${value.toFixed(1)}`}
+                                min={4}
+                                max={8}
                             />
                             <LineChart
                                 style={{ flex: 1, marginLeft: 16, paddingBottom: -10 }}
-                                data={sensorData.pH_Value}
+                                data={graphData}
                                 svg={{ stroke: 'rgba(0, 153, 51, 1)' }}
-                                contentInset={{ top: 20, bottom: 10 }}
+                                contentInset={{ top: 20, bottom: 20 }}
                                 animate={true}
+                                yMin={4}
+                                yMax={8}
                             >
                                 <Grid />
                                 <HorizontalLine />
