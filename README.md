@@ -6,7 +6,7 @@ The application was developed on the AWS Amplify development platform to enable 
 
 A demonstration of the application can be seen below. 
 
-![](Feb-04-2020 12-24-03.gif)
+![gif](phytopilot.gif)
 
 ## Built With
 
